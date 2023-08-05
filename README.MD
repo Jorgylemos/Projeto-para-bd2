@@ -27,6 +27,9 @@ npm install
 npm run dev
 ```
 
-<p>Após tudo pronto, o servidor irá ser iniciado. É preciso abrir o navegador e colocar o e localhost:port que o servidor está rodando. Por padrão, no server.config.json, a porta é 4000. Então ficaria: http://localhost:4000</p>
+<p>Após tudo pronto, o servidor será iniciado.</p>
+<p>É preciso abrir o navegador e colocar o localhost:port.</p> 
+<p>Por padrão, no server.config.json, a porta está como 4000.</p>
+<p>Então ficaria: http://localhost:4000</p>
 
 <h3>Obs: infelizmente estava tendo problemas com Axios dentro do .ejs, então resolvi utilizar os métodos DELETE e PUT nas rotas de Post mesmo, então criei as rotas "/user/update" e "/user/delete".</h3>
