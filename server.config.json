@@ -1,0 +1,13 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 4000,
+    "error": "Failure to connect to the server."
+  },
+  "ConnectDB": {
+    "url": "mongodb+srv://jorge:database@cluster1.zubu6.mongodb.net/",
+    "db": "myDb",
+    "collection": "Users",
+    "error": "Failure to connect to the database."
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="min-h-screen bg-zinc-950 flex flex-col gap-10 justify-center items-center">
+        <div class="flex flex-row items-center space-x-10">
+            <form action="/user" method="post" class="flex flex-col space-y-4">
+                <h1 class="text-violet-500">Criar novo usuário</h1>
+                <div class="flex">
+                    <label for="username"></label>
+                    <input placeholder="Username" required type="text" id="username" name="username"
+                        class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+                    <label class="ml-4" for="email"></label>
+                    <input placeholder="Email: gmail.com ou outlook.com" required type="email" id="email" name="email"
+                        class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+                </div>
+
+
+                <label for="password"></label>
+                <input placeholder="Senha" required minlength="6" maxlength="30" type="password" id="password" name="password"
+                    class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm shadow-lg shadow-black">
+
+
+                <button type="submit"
+                    class="text-white bg-violet-600 h-7 shadow-lg shadow-black hover:bg-violet-700 mt-5 rounded-lg">Criar</button>
+            </form>
+
+            <div class="flex flex-col">
+                <h1 class="text-violet-500 font-bold text-lg mb-4">Lista de usuários</h1>
+
+                <ul class="flex flex-col text-xs text-white">
+                    <pre id="users-list"></pre>
+                </ul>
+                <button onclick="GetUsers()"
+                    class="text-white bg-violet-500 hover:bg-violet-600 rounded-md px-2 py-1">Atualizar</button>
+            </div>
+        </div>
+        <div class="flex flex-row space-x-4 items-center">
+            <div>
+                <h1 class="text-white">Atualizar um usuário</h1>
+
+                <form action="/user/update" method="post" id="updateForm" class="flex flex-col space-y-4">
+                    <label for="email"></label>
+                    <input placeholder="Digite o email do usuário a ser atualizado" required type="text" name="email"
+                        class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+
+                    <div class="flex">
+                        <label for="username"></label>
+                        <input placeholder="Novo username" type="text" name="username"
+                            class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+
+                        <label class="ml-4" for="newEmail"></label>
+                        <input placeholder="Novo email" type="email" name="newEmail"
+                            class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+                    </div>
+
+
+                    <label for="password"></label>
+                    <input placeholder="Senha" type="password" minlength="6" maxlength="30" name="password"
+                        class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm shadow-lg shadow-black">
+
+
+                    <button type="submit"
+                        class="text-white bg-violet-600 h-7 shadow-lg shadow-black hover:bg-violet-700 mt-5 rounded-lg">Alterar</button>
+                </form>
+            </div>
+            <div>
+                <h1 class="text-white">Deletar um usuário</h1>
+                 <form action="/user/delete" method="post" id="updateForm" class="flex flex-col space-y-4">
+                    <label for="email"></label>
+                    <input placeholder="Digite o email do usuário a ser deletado" required type="text" name="email"
+                        class="rounded-md bg-zinc-900 h-7 pl-1.5 text-white text-sm w-48 shadow-lg shadow-black">
+
+                    <button type="submit"
+                        class="text-white bg-violet-600 h-7 shadow-lg shadow-black hover:bg-violet-700 mt-5 rounded-lg">Deletar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+
+        async function GetUsers() {
+            const res = await fetch('http://localhost:4000/user')
+            const data = await res.json()
+            const dataArray = Object.values(data)
+
+            const usersList = document.getElementById('users-list')
+            usersList.innerHTML = ''
+
+
+            dataArray.forEach(user => {
+                const li = document.createElement('li')
+                li.innerText = JSON.stringify(user, null, 4)
+
+                usersList.appendChild(li)
+            })
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+// REST Extension is required for requests.
+# GET http://localhost:4000/
+# POST http://localhost:4000/user?username=jorgylemos&email=jorgylemos@example.com&password=123456
+PUT http://localhost:4000/user HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+{
+    "email": "jorgylemos@outlook.com",
+    "username": "jorgylemos2",
+    "newEmail": "",
+    "password": ""
+}
