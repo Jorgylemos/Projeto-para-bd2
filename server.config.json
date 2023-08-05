@@ -5,7 +5,7 @@
     "error": "Failure to connect to the server."
   },
   "ConnectDB": {
-    "url": "mongodb+srv://<username>:<database>@cluster1.zubu6.mongodb.net/",
+    "url": "mongodb+srv://<username>:<password>@cluster1.zubu6.mongodb.net/",
     "db": "myDb",
     "collection": "Users",
     "error": "Failure to connect to the database."
